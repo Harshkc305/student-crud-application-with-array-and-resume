@@ -23,5 +23,5 @@ app.use(express.urlencoded({extended:true}))
 app.use(require("./routes/app.routes"))
 app.listen(process.env.port, async()=>{
     await db.connectDb()
-    console.log(`server is running @http://127.0.0.04:${process.env.port}`)
+    console.log(`server is running on port` + process.env.port)
 })
