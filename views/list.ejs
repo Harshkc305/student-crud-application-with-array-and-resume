@@ -1,0 +1,54 @@
+<%-include("layout/header")%>
+
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Student Information</h2>
+        <a href="/add" class="btn btn-success btn-lg">
+        <i class="bi bi-plus-lg"></i> Add Student
+        </a>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">email</th>
+                <th scope="col">skills</th>
+                <th scope="col">resume edit</th>
+                <th scope="col">resume download</th>
+                <th scope="col">soft Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% allData.map((data, index)=>{%>
+                <tr>
+                    <th scope="row"><%= index + 1 %></th>
+                    
+                    <td><%=data.name%></td>
+                    <td><%=data.email%></td>
+                    <td><%=data.skills%></td>
+
+                    <!-- <td><a href="/upload/<%= data.resume %>" target="_blank">View</a></td> -->
+                    
+                    <td><a href="/edit/<%= data._id %>">Edit</a></td>
+
+                     <!-- <td>
+                        <% if (data.resume) { %>
+                            <a href="/upload/<%= data.resume %>" class="btn btn-sm btn-success" download>Download</a>
+                        <% } else { %>
+                            <span>No Resume</span>
+                        <% } %>
+                    </td> -->
+                    <td><a href="/resume/<%= data.resume %>" class="btn btn-success btn-sm">Download</a></td>
+                    <td><a href="/soft-delete/<%= data._id %>">soft delete</a></td>
+                </tr>
+                
+                <% })%>
+            </tbody>
+        </table>
+    </div>
+
+<%-include("layout/footer")%>

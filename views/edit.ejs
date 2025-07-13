@@ -1,0 +1,43 @@
+<%-include("layout/header")%>
+
+<div class="container">
+  <h1>Edit form</h1>
+  <form action="/update-form" method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="name" class="form-control" placeholder="Name" name="name" value="<%=data.name%>">
+   
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" class="form-control" placeholder="Email" name="email" value="<%=data.email%>">
+    
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Skilss</label>
+    <input type="text" class="form-control" placeholder="Skills" name="skills" value="<%=data.skills%>">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Resume</label>
+    <!-- <input type="file" class="form-control" placeholder="file" name="resume" value="<%=data.resume%>"> -->
+    <input type="file" class="form-control" name="resume" accept="application/pdf">
+
+    <% if (data.resume){ %>
+      <div class="mt-2">
+        <a href="/upload/<%= data.resume %>" class="btn btn-secondary" target="_blank">View</a>
+        <span>(<%=data.resume%>)</span>
+
+      </div>
+
+    <% } %>
+  </div>
+
+    <input type="hidden" name="id" value="<%=data._id %>">
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<%-include("layout/footer")%>
